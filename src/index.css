@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+}
+
+::selection {
+  background: #C8A96A;
+  color: white;
+}
+
+p {
+  line-height: 1.6;
+}
+
+@font-face {
+    font-family: "Anaktoria";
+    src: url("https://db.onlinewebfonts.com/t/f49a111b2030d85b52b84b1d9f065897.eot");
+    src: url("https://db.onlinewebfonts.com/t/f49a111b2030d85b52b84b1d9f065897.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/f49a111b2030d85b52b84b1d9f065897.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f49a111b2030d85b52b84b1d9f065897.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/f49a111b2030d85b52b84b1d9f065897.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f49a111b2030d85b52b84b1d9f065897.svg#Anaktoria")format("svg");
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-Bold.eot');
+    src: local('Accia Piano Bold'), local('fonts/AcciaPiano/AcciaPiano-Bold'),
+        url('fonts/AcciaPiano/AcciaPiano-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-Bold.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-Bold.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-BoldItalic.eot');
+    src: local('Accia Piano Bold Italic'), local('fonts/AcciaPiano/AcciaPiano-BoldItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-BoldItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-BoldItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-ExtraBold.eot');
+    src: local('Accia Piano Extra Bold'), local('fonts/AcciaPiano/AcciaPiano-ExtraBold'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBold.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBold.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-ExtraLight.eot');
+    src: local('Accia Piano Extra Light'), local('fonts/AcciaPiano/AcciaPiano-ExtraLight'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLight.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLight.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-ExtraBoldItalic.eot');
+    src: local('Accia Piano Extra Bold Italic'), local('fonts/AcciaPiano/AcciaPiano-ExtraBoldItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBoldItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBoldItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-LightItalic.eot');
+    src: local('Accia Piano Light Italic'), local('fonts/AcciaPiano/AcciaPiano-LightItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-LightItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-LightItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-ExtraLightItalic.eot');
+    src: local('Accia Piano Extra Light Italic'), local('fonts/AcciaPiano/AcciaPiano-ExtraLightItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLightItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLightItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLightItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-ExtraLightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-MediumItalic.eot');
+    src: local('Accia Piano Medium Italic'), local('fonts/AcciaPiano/AcciaPiano-MediumItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-MediumItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-MediumItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-SemiBoldItalic.eot');
+    src: local('Accia Piano Semi Bold Italic'), local('fonts/AcciaPiano/AcciaPiano-SemiBoldItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBoldItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBoldItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-Regular.eot');
+    src: local('Accia Piano Regular'), local('fonts/AcciaPiano/AcciaPiano-Regular'),
+        url('fonts/AcciaPiano/AcciaPiano-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-Regular.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-Regular.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-SemiBold.eot');
+    src: local('Accia Piano Semi Bold'), local('fonts/AcciaPiano/AcciaPiano-SemiBold'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBold.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBold.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-Medium.eot');
+    src: local('Accia Piano Medium'), local('fonts/AcciaPiano/AcciaPiano-Medium'),
+        url('fonts/AcciaPiano/AcciaPiano-Medium.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-Medium.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-Medium.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-Italic.eot');
+    src: local('Accia Piano Italic'), local('fonts/AcciaPiano/AcciaPiano-Italic'),
+        url('fonts/AcciaPiano/AcciaPiano-Italic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-Italic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-Italic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-Light.eot');
+    src: local('Accia Piano Light'), local('fonts/AcciaPiano/AcciaPiano-Light'),
+        url('fonts/AcciaPiano/AcciaPiano-Light.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-Light.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-Light.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-Thin.eot');
+    src: local('Accia Piano Thin'), local('fonts/AcciaPiano/AcciaPiano-Thin'),
+        url('fonts/AcciaPiano/AcciaPiano-Thin.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-Thin.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-Thin.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Accia Piano';
+    src: url('fonts/AcciaPiano/AcciaPiano-ThinItalic.eot');
+    src: local('Accia Piano Thin Italic'), local('fonts/AcciaPiano/AcciaPiano-ThinItalic'),
+        url('fonts/AcciaPiano/AcciaPiano-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/AcciaPiano/AcciaPiano-ThinItalic.woff2') format('woff2'),
+        url('fonts/AcciaPiano/AcciaPiano-ThinItalic.woff') format('woff'),
+        url('fonts/AcciaPiano/AcciaPiano-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
