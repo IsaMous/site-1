@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App()
 {
@@ -32,6 +33,7 @@ export default function App()
 			</main>
 
 		  	<Footer />
+			<Analytics />
 		</div>
 	)
 }
