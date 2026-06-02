@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://site-isa-1-olive.vercel.app/sitemap.xml

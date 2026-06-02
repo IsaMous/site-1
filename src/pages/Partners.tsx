@@ -40,7 +40,6 @@ const PARTNERS: Array<PartnerInfos> = [
 /* ─── CONSTANTES ─── */
 const ACCENT    = '#114861'
 const WARM_BG   = '#f7f3ec'
-const MUTED     = '#6b6155'
 const DARK_NAVY = '#0a2f3f'
 
 function PartnerCard({ partner }: { partner: PartnerInfos }) {
@@ -87,16 +86,6 @@ function PartnerCard({ partner }: { partner: PartnerInfos }) {
           }}
         />
       )}
-      {/* <span
-        style={{
-          fontFamily: "'Jost', sans-serif",
-          fontSize: '0.95rem',
-          color: DARK_NAVY,
-          textAlign: 'center',
-        }}
-      >
-        {partner.name}
-      </span> */}
     </motion.a>
   )
 }
@@ -152,24 +141,6 @@ export default function Partners()
             Nos <em style={{ fontStyle: 'italic', color: ACCENT }}>partenaires</em>
           </motion.h1>
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          style={{
-            fontFamily: "'Jost', sans-serif",
-            fontSize: '0.9rem',
-            fontWeight: 300,
-            lineHeight: 1.8,
-            color: MUTED,
-            maxWidth: '42ch',
-            alignSelf: 'end',
-            paddingBottom: '0.5rem',
-          }}
-        >
-          Découvrez nos partenaires et fournisseurs.
-        </motion.p>
       </div>
 
       {/* GRILLE */}
