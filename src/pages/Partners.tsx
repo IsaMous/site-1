@@ -111,7 +111,7 @@ export default function Partners()
         style={{
           maxWidth: 1200,
           margin: '0 auto',
-          padding: '5rem 3rem 3rem',
+          padding: '2rem 3rem 3rem',
           display: 'grid',
           gridTemplateColumns: 'auto 1fr',
           gap: '4rem',

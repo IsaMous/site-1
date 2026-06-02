@@ -14,18 +14,18 @@ const MAPS_LINK_URL = 'https://www.google.com/maps/place/Tapissier+Décorateur+I
 const CONTACT_DETAILS = {
   address: ['Tapissier Décorateur Isabelle Mousterou', '126 Av. Maréchal Leclerc', '84120 Pertuis', 'France'],
   hours: [
-    { day: 'Lundi', morning: '9h-12h', afternoon: 'Sur rendez-vous' },
-    { day: 'Mardi', morning: '9h-12h', afternoon: '14h-17h' },
-    { day: 'Mercredi', morning: '9h-12h', afternoon: '14h-18h' },
-    { day: 'Jeudi', morning: '9h-12h', afternoon: 'Sur rendez-vous' },
+    { day: 'Lundi',    morning: '9h-12h',          afternoon: 'Sur rendez-vous' },
+    { day: 'Mardi',    morning: '9h-12h',          afternoon: '14h-17h' },
+    { day: 'Mercredi', morning: '9h-12h',          afternoon: '14h-18h' },
+    { day: 'Jeudi',    morning: '9h-12h',          afternoon: 'Sur rendez-vous' },
     { day: 'Vendredi', morning: 'Sur rendez-vous', afternoon: '14h-18h' },
-    { day: 'Samedi', morning: '9h-12h', afternoon: '14h-16h' },
-    { day: 'Dimanche', morning: 'Fermé', afternoon: 'Fermé' },
+    { day: 'Samedi',   morning: '9h-12h',          afternoon: '14h-16h' },
+    { day: 'Dimanche', morning: 'Fermé',            afternoon: 'Fermé' },
   ],
   email: 'isabelle.mousterou-binois@orange.fr',
   phone: '06 20 81 51 58',
   socials: [
-    { label: 'Instagram', value: '@isabelle.mousterou' }
+    { label: 'Instagram', value: '@isabelle.mousterou' },
   ],
 }
 
@@ -52,7 +52,6 @@ function isWorkshopOpen(now: Date) {
   const day = now.getDay()
   const slots = OPENING_SLOTS[day] ?? []
   const currentMinutes = now.getHours() * 60 + now.getMinutes()
-
   return slots.some((slot) => currentMinutes >= slot.start && currentMinutes < slot.end)
 }
 
@@ -67,53 +66,30 @@ function InfoCard({
 }) {
   return (
     <motion.article
-      variants={{fadeUp}}
+      variants={{ fadeUp }}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
       custom={0}
-      style={{
-        background: '#fff',
-        border: '1px solid rgba(17,72,97,0.12)',
-        padding: '1.75rem',
-        minHeight: 240,
-      }}
+      className="bg-white border border-[rgba(17,72,97,0.12)] p-6 sm:p-7 min-h-[240px]"
     >
       <div
-        style={{
-          fontFamily: "'Jost', sans-serif",
-          fontSize: 10,
-          letterSpacing: '0.24em',
-          textTransform: 'uppercase',
-          color: ACCENT,
-          opacity: 0.55,
-          marginBottom: '0.85rem',
-        }}
+        className="mb-3 text-[10px] tracking-[0.24em] uppercase"
+        style={{ fontFamily: "'Jost', sans-serif", color: ACCENT, opacity: 0.55 }}
       >
         {eyebrow}
       </div>
 
       <h2
-        style={{
-          fontFamily: "'Accia Piano', 'Cormorant Garamond', serif",
-          fontSize: '1.8rem',
-          fontWeight: 300,
-          lineHeight: 1.1,
-          color: DARK_NAVY,
-          marginBottom: '1rem',
-        }}
+        className="text-[1.5rem] sm:text-[1.8rem] font-light leading-[1.1] mb-4"
+        style={{ fontFamily: "'Accia Piano', 'Cormorant Garamond', serif", color: DARK_NAVY }}
       >
         {title}
       </h2>
 
       <div
-        style={{
-          fontFamily: "'Jost', sans-serif",
-          fontSize: '0.95rem',
-          fontWeight: 300,
-          lineHeight: 1.8,
-          color: MUTED,
-        }}
+        className="text-[0.95rem] font-light leading-[1.8]"
+        style={{ fontFamily: "'Jost', sans-serif", color: MUTED }}
       >
         {children}
       </div>
@@ -121,14 +97,12 @@ function InfoCard({
   )
 }
 
-export default function Contact()
-{
+export default function Contact() {
   const [isOpenNow, setIsOpenNow] = useState(() => isWorkshopOpen(new Date()))
 
   useEffect(() => {
     const updateStatus = () => setIsOpenNow(isWorkshopOpen(new Date()))
     updateStatus()
-
     const intervalId = window.setInterval(updateStatus, 60000)
     return () => window.clearInterval(intervalId)
   }, [])
@@ -138,103 +112,62 @@ export default function Contact()
 
   return (
     <div style={{ background: WARM_BG, minHeight: '100vh', paddingTop: 72, color: '#1a1a18' }}>
+
+      {/* ── EN-TÊTE ──────────────────────────────────────────────── */}
       <section
-        style={{
-          maxWidth: 1200,
-          margin: '0 auto',
-          padding: '5rem 3rem 3rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '3rem',
-          alignItems: 'end',
-          borderBottom: '1px solid rgba(17,72,97,0.1)',
-        }}
+        className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-12 pt-8 pb-12
+                   grid grid-cols-1 gap-6
+                   border-b border-[rgba(17,72,97,0.1)]"
       >
-        <div style={{ maxWidth: 720 }}>
+        <div className="max-w-[720px]">
           <motion.p
-            variants={{fadeUp}}
+            variants={{ fadeUp }}
             initial="hidden"
             animate="show"
             custom={0}
-            style={{
-              fontFamily: "'Jost', sans-serif",
-              fontSize: 10,
-              letterSpacing: '0.26em',
-              textTransform: 'uppercase',
-              color: ACCENT,
-              opacity: 0.55,
-              marginBottom: '0.85rem',
-            }}
+            className="mb-3 text-[10px] tracking-[0.26em] uppercase"
+            style={{ fontFamily: "'Jost', sans-serif", color: ACCENT, opacity: 0.55 }}
           >
             Contact
           </motion.p>
 
           <motion.h1
-            variants={{fadeUp}}
+            variants={{ fadeUp }}
             initial="hidden"
             animate="show"
             custom={1}
+            className="font-light leading-[1.05] tracking-[-0.01em] mb-4"
             style={{
               fontFamily: "'Accia Piano', 'Cormorant Garamond', serif",
-              fontSize: 'clamp(2.8rem, 5vw, 4.4rem)',
-              fontWeight: 300,
-              lineHeight: 1.05,
+              fontSize: 'clamp(2.2rem, 5vw, 4.4rem)',
               color: DARK_NAVY,
-              letterSpacing: '-0.01em',
-              marginBottom: '1rem',
             }}
           >
-            Parlons de votre <em style={{ fontStyle: 'italic', color: ACCENT }}>projet</em>.
+            Parlons de votre{' '}
+            <em style={{ fontStyle: 'italic', color: ACCENT }}>projet</em>.
           </motion.h1>
-
         </div>
-
-        <motion.p
-            variants={{fadeUp}}
-            initial="hidden"
-            animate="show"
-            custom={2}
-            style={{
-              fontFamily: "'Jost', sans-serif",
-              fontSize: '1rem',
-              fontWeight: 300,
-              lineHeight: 1.85,
-              color: MUTED,
-              maxWidth: '58ch',
-            }}
-          >
-            Une première visite, une restauration délicate ou un simple avis sur une pièce à reprendre,
-            cette page rassemble les informations utiles pour nous joindre et préparer votre venue.
-          </motion.p>
-
       </section>
 
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '3rem 3rem 5rem' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-            gap: '1.25rem',
-          }}
-        >
-          <InfoCard eyebrow="Adresse de l’atelier" title="Venir à l’atelier">
+      {/* ── CONTENU ──────────────────────────────────────────────── */}
+      <section className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-12 py-10 pb-20">
+
+        {/* Grille 4 InfoCards : 1 col mobile → 2 col sm+ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+          {/* Adresse */}
+          <InfoCard eyebrow="Adresse de l'atelier" title="Venir à l'atelier">
             <p>
-              Les visites se font idéalement sur rendez-vous afin de prendre le temps d’examiner la pièce et
-              d’échanger sur le projet.
+              Les visites se font idéalement sur rendez-vous afin de prendre le temps d'examiner
+              la pièce et d'échanger sur le projet.
             </p>
 
-            <div
-              style={{
-                marginTop: '1rem',
-                border: '1px solid rgba(17,72,97,0.12)',
-                background: '#fff',
-              }}
-            >
+            <div className="mt-4 border border-[rgba(17,72,97,0.12)] bg-white">
               <iframe
                 title="Carte de l'atelier"
                 src={MAPS_EMBED_URL}
                 width="100%"
-                height="220"
+                height="200"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ border: 0, display: 'block' }}
@@ -245,37 +178,24 @@ export default function Contact()
               href={MAPS_LINK_URL}
               target="_blank"
               rel="noreferrer"
-              style={{
-                marginTop: '0.8rem',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                color: ACCENT,
-                textDecoration: 'none',
-                fontFamily: "'Jost', sans-serif",
-                fontSize: 11,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-              }}
+              className="mt-3 inline-flex items-center gap-[0.45rem] no-underline text-[11px] tracking-[0.16em] uppercase"
+              style={{ fontFamily: "'Jost', sans-serif", color: ACCENT }}
             >
               Ouvrir dans Google Maps
               <span aria-hidden>↗</span>
             </a>
 
-            <p style={{ marginBottom: '0.8rem' }}>
-              <br />
-              {CONTACT_DETAILS.address[0]}
-              <br />
-              {CONTACT_DETAILS.address[1]}
-              <br />
-              {CONTACT_DETAILS.address[2]}
-              <br />
+            <p className="mt-3 mb-2">
+              {CONTACT_DETAILS.address[0]}<br />
+              {CONTACT_DETAILS.address[1]}<br />
+              {CONTACT_DETAILS.address[2]}<br />
               {CONTACT_DETAILS.address[3]}
             </p>
-
           </InfoCard>
 
-          <InfoCard eyebrow="Horaires d’ouverture"
+          {/* Horaires */}
+          <InfoCard
+            eyebrow="Horaires d'ouverture"
             title={(
               <>
                 Nous sommes actuellement{' '}
@@ -285,89 +205,33 @@ export default function Contact()
           >
             <div style={{ overflowX: 'auto' }}>
               <table
-                style={{
-                  width: '100%',
-                  minWidth: 360,
-                  borderCollapse: 'collapse',
-                  border: '1px solid rgba(17,72,97,0.12)',
-                }}
+                className="w-full border-collapse border border-[rgba(17,72,97,0.12)]"
+                style={{ minWidth: 300 }}
               >
                 <thead>
                   <tr style={{ background: 'rgba(17,72,97,0.06)' }}>
-                    <th
-                      style={{
-                        textAlign: 'left',
-                        padding: '0.55rem 0.7rem',
-                        fontFamily: "'Jost', sans-serif",
-                        fontSize: 10,
-                        letterSpacing: '0.16em',
-                        textTransform: 'uppercase',
-                        color: ACCENT,
-                        borderBottom: '1px solid rgba(17,72,97,0.12)',
-                      }}
-                    >
-                      Jour
-                    </th>
-                    <th
-                      style={{
-                        textAlign: 'left',
-                        padding: '0.55rem 0.7rem',
-                        fontFamily: "'Jost', sans-serif",
-                        fontSize: 10,
-                        letterSpacing: '0.16em',
-                        textTransform: 'uppercase',
-                        color: ACCENT,
-                        borderBottom: '1px solid rgba(17,72,97,0.12)',
-                      }}
-                    >
-                      Matin
-                    </th>
-                    <th
-                      style={{
-                        textAlign: 'left',
-                        padding: '0.55rem 0.7rem',
-                        fontFamily: "'Jost', sans-serif",
-                        fontSize: 10,
-                        letterSpacing: '0.16em',
-                        textTransform: 'uppercase',
-                        color: ACCENT,
-                        borderBottom: '1px solid rgba(17,72,97,0.12)',
-                      }}
-                    >
-                      Après-midi
-                    </th>
+                    {['Jour', 'Matin', 'Après-midi'].map((h) => (
+                      <th
+                        key={h}
+                        className="text-left px-2 py-2 text-[10px] tracking-[0.16em] uppercase border-b border-[rgba(17,72,97,0.12)]"
+                        style={{ fontFamily: "'Jost', sans-serif", color: ACCENT }}
+                      >
+                        {h}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
-
                 <tbody>
                   {CONTACT_DETAILS.hours.map((hour) => (
                     <tr key={hour.day}>
                       <td
-                        style={{
-                          padding: '0.55rem 0.7rem',
-                          borderBottom: '1px solid rgba(17,72,97,0.08)',
-                          color: DARK_NAVY,
-                          fontWeight: 400,
-                        }}
+                        className="px-2 py-2 border-b border-[rgba(17,72,97,0.08)] font-medium"
+                        style={{ color: DARK_NAVY }}
                       >
                         {hour.day}
                       </td>
-                      <td
-                        style={{
-                          padding: '0.55rem 0.7rem',
-                          borderBottom: '1px solid rgba(17,72,97,0.08)',
-                        }}
-                      >
-                        {hour.morning}
-                      </td>
-                      <td
-                        style={{
-                          padding: '0.55rem 0.7rem',
-                          borderBottom: '1px solid rgba(17,72,97,0.08)',
-                        }}
-                      >
-                        {hour.afternoon}
-                      </td>
+                      <td className="px-2 py-2 border-b border-[rgba(17,72,97,0.08)]">{hour.morning}</td>
+                      <td className="px-2 py-2 border-b border-[rgba(17,72,97,0.08)]">{hour.afternoon}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -375,163 +239,132 @@ export default function Contact()
             </div>
           </InfoCard>
 
+          {/* Téléphone & mail */}
           <InfoCard eyebrow="Coordonnées directes" title="Téléphone et mail">
-            <p style={{ marginBottom: '0.8rem' }}>
-              <span style={{ display: 'block', fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: ACCENT, opacity: 0.55, marginBottom: '0.35rem' }}>
+            <p className="mb-3">
+              <span
+                className="block text-[10px] tracking-[0.18em] uppercase mb-1"
+                style={{ fontFamily: "'Jost', sans-serif", color: ACCENT, opacity: 0.55 }}
+              >
                 Email
               </span>
-              <a href={`mailto:${CONTACT_DETAILS.email}`} style={{ color: DARK_NAVY, textDecoration: 'none' }}>
+              <a
+                href={`mailto:${CONTACT_DETAILS.email}`}
+                className="no-underline break-all"
+                style={{ color: DARK_NAVY }}
+              >
                 {CONTACT_DETAILS.email}
               </a>
             </p>
             <p>
-              <span style={{ display: 'block', fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: ACCENT, opacity: 0.55, marginBottom: '0.35rem' }}>
+              <span
+                className="block text-[10px] tracking-[0.18em] uppercase mb-1"
+                style={{ fontFamily: "'Jost', sans-serif", color: ACCENT, opacity: 0.55 }}
+              >
                 Téléphone
               </span>
-              <a href={`tel:${CONTACT_DETAILS.phone.replace(/\s+/g, '')}`} style={{ color: DARK_NAVY, textDecoration: 'none' }}>
+              <a
+                href={`tel:${CONTACT_DETAILS.phone.replace(/\s+/g, '')}`}
+                className="no-underline"
+                style={{ color: DARK_NAVY }}
+              >
                 {CONTACT_DETAILS.phone}
               </a>
             </p>
           </InfoCard>
 
-          <InfoCard eyebrow="Réseaux" title="Suivre l’atelier">
-            <div style={{ display: 'grid', gap: '0.75rem' }}>
+          {/* Réseaux */}
+          <InfoCard eyebrow="Réseaux" title="Suivre l'atelier">
+            <div className="grid gap-3">
               {CONTACT_DETAILS.socials.map((social) => (
                 <div
                   key={social.label}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    gap: '1rem',
-                    paddingBottom: '0.65rem',
-                    borderBottom: '1px solid rgba(17,72,97,0.08)',
-                  }}
+                  className="flex justify-between gap-4 pb-2 border-b border-[rgba(17,72,97,0.08)]"
                 >
                   <span style={{ color: DARK_NAVY }}>{social.label}</span>
-                  <span style={{ color: MUTED, textAlign: 'right' }}>{social.value}</span>
+                  <span className="text-right" style={{ color: MUTED }}>{social.value}</span>
                 </div>
               ))}
             </div>
           </InfoCard>
         </div>
 
+        {/* ── Bandeau bas : 1 col mobile → 2 col sm+ ── */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            marginTop: '1.25rem',
-            display: 'grid',
-            gridTemplateColumns: '1.4fr 1fr',
-            gap: '1.25rem',
-          }}
+          className="mt-5 grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-5"
         >
+          {/* Bloc bleu */}
           <div
-            style={{
-              background: ACCENT,
-              color: CREAM,
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              minHeight: 240,
-            }}
+            className="flex flex-col justify-between min-h-[240px] p-7 sm:p-8"
+            style={{ background: ACCENT, color: CREAM }}
           >
             <div>
               <div
-                style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontSize: 10,
-                  letterSpacing: '0.24em',
-                  textTransform: 'uppercase',
-                  opacity: 0.6,
-                  marginBottom: '0.9rem',
-                }}
+                className="text-[10px] tracking-[0.24em] uppercase opacity-60 mb-3"
+                style={{ fontFamily: "'Jost', sans-serif" }}
               >
                 Préparer votre demande
               </div>
               <h2
-                style={{
-                  fontFamily: "'Accia Piano', 'Cormorant Garamond', serif",
-                  fontSize: '2rem',
-                  fontWeight: 300,
-                  lineHeight: 1.1,
-                  marginBottom: '1rem',
-                }}
+                className="text-[1.6rem] sm:text-[2rem] font-light leading-[1.1] mb-4"
+                style={{ fontFamily: "'Accia Piano', 'Cormorant Garamond', serif" }}
               >
-                Plus votre demande est précise, plus la réponse l’est aussi.
+                Plus votre demande est précise, plus la réponse l'est aussi.
               </h2>
             </div>
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: '0.95rem', lineHeight: 1.8, opacity: 0.75 }}>
-              Une photo de face, une photo de détail, les dimensions et quelques mots sur l’usage suffisent
-              souvent pour lancer un premier échange.
+            <p
+              className="text-[0.95rem] leading-[1.8] opacity-75"
+              style={{ fontFamily: "'Jost', sans-serif" }}
+            >
+              Une photo de face, une photo de détail, les dimensions et quelques mots sur l'usage
+              suffisent souvent pour lancer un premier échange.
             </p>
           </div>
 
+          {/* Bloc blanc */}
           <div
-            style={{
-              background: '#fff',
-              border: '1px solid rgba(17,72,97,0.12)',
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
+            className="flex flex-col justify-between p-7 sm:p-8 border border-[rgba(17,72,97,0.12)] bg-white"
           >
             <div>
               <div
-                style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontSize: 10,
-                  letterSpacing: '0.24em',
-                  textTransform: 'uppercase',
-                  color: ACCENT,
-                  opacity: 0.55,
-                  marginBottom: '0.9rem',
-                }}
+                className="text-[10px] tracking-[0.24em] uppercase mb-3"
+                style={{ fontFamily: "'Jost', sans-serif", color: ACCENT, opacity: 0.55 }}
               >
                 Besoin de réflexion ?
               </div>
               <p
-                style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontSize: '0.95rem',
-                  lineHeight: 1.8,
-                  color: MUTED,
-                  marginBottom: '1.5rem',
-                }}
+                className="text-[0.95rem] leading-[1.8] mb-6"
+                style={{ fontFamily: "'Jost', sans-serif", color: MUTED }}
               >
-                Vous pouvez également revenir aux réalisations ou à la présentation de l’atelier avant de nous
-                contacter.
+                Vous pouvez également revenir aux réalisations ou à la présentation de l'atelier
+                avant de nous contacter.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <div className="flex flex-wrap gap-3">
               <Link
                 to="/portfolio"
+                className="inline-flex items-center justify-center px-5 py-3 border no-underline
+                           text-[11px] tracking-[0.16em] uppercase transition-[padding,background,color] duration-300"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '0.8rem 1.4rem',
-                  border: `1px solid ${ACCENT}`,
+                  borderColor: ACCENT,
                   color: ACCENT,
                   background: 'transparent',
-                  textDecoration: 'none',
                   fontFamily: "'Jost', sans-serif",
-                  fontSize: 11,
-                  letterSpacing: '0.16em',
-                  textTransform: 'uppercase',
-                  transition: 'all 0.3s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.padding = '0.8rem 1.8rem'
+                  e.currentTarget.style.paddingLeft = '1.8rem'
+                  e.currentTarget.style.paddingRight = '1.8rem'
                   e.currentTarget.style.background = ACCENT
                   e.currentTarget.style.color = CREAM
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.padding = '0.8rem 1.4rem'
+                  e.currentTarget.style.paddingLeft = '1.25rem'
+                  e.currentTarget.style.paddingRight = '1.25rem'
                   e.currentTarget.style.background = 'transparent'
                   e.currentTarget.style.color = ACCENT
                 }}

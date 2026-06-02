@@ -154,7 +154,6 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
     </motion.div>
   )
 }
-
 /* ─── MODAL ─── */
 function Modal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [current, setCurrent] = useState(0)
@@ -176,16 +175,8 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
       onClick={onClose}
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 200,
-        background: 'rgba(10,47,63,0.88)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem',
-      }}
+      className="fixed inset-0 z-[200] flex items-end items-center justify-center sm:p-8 p-0"
+      style={{ background: 'rgba(10,47,63,0.88)' }}
     >
       <motion.div
         initial={{ opacity: 0, y: 32, scale: 0.97 }}
@@ -193,17 +184,11 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
         exit={{ opacity: 0, y: 32, scale: 0.97 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         onClick={e => e.stopPropagation()}
-        style={{
-          background: WARM_BG,
-          maxWidth: 1200,
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          overflow: 'hidden',
-        }}
+        className="w-full sm:max-w-[1200px] grid grid-cols-1 md:grid-cols-2 overflow-hidden max-h-[92vh] sm:max-h-[90vh] overflow-y-auto"
+        style={{ background: WARM_BG }}
       >
-        {/* Photo principale */}
-        <div style={{ position: 'relative', aspectRatio: '1', overflow: 'hidden' }}>
+        {/* ── Photo principale ── */}
+        <div className="relative overflow-hidden" style={{ aspectRatio: '1' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -211,11 +196,8 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                ...getBackgroundStyle(project.photos[current]),
-              }}
+              className="absolute inset-0"
+              style={getBackgroundStyle(project.photos[current])}
             />
           </AnimatePresence>
 
@@ -224,53 +206,27 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
             <>
               <button
                 onClick={() => setCurrent(i => (i - 1 + project.photos.length) % project.photos.length)}
-                style={{
-                  position: 'absolute', left: 12, top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(247,243,236,0.85)',
-                  border: 'none', cursor: 'pointer',
-                  width: 36, height: 36,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'sans-serif', fontSize: 18, color: ACCENT,
-                }}
-              >
-                ←
-              </button>
+                className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 border-none cursor-pointer text-lg"
+                style={{ background: 'rgba(247,243,236,0.85)', color: ACCENT }}
+              >←</button>
               <button
                 onClick={() => setCurrent(i => (i + 1) % project.photos.length)}
-                style={{
-                  position: 'absolute', right: 12, top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(247,243,236,0.85)',
-                  border: 'none', cursor: 'pointer',
-                  width: 36, height: 36,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'sans-serif', fontSize: 18, color: ACCENT,
-                }}
-              >
-                →
-              </button>
+                className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 border-none cursor-pointer text-lg"
+                style={{ background: 'rgba(247,243,236,0.85)', color: ACCENT }}
+              >→</button>
             </>
           )}
 
           {/* Miniatures */}
-          <div
-            style={{
-              position: 'absolute', bottom: 12, left: 0, right: 0,
-              display: 'flex', justifyContent: 'center', gap: 6,
-            }}
-          >
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
             {project.photos.map((p, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
+                className="w-9 h-9 p-0 cursor-pointer"
                 style={{
-                  width: 36,
-                  height: 36,
                   border: i === current ? `2px solid ${CREAM}` : '2px solid transparent',
                   ...getBackgroundStyle(p),
-                  cursor: 'pointer',
-                  padding: 0,
                   transition: 'border-color 0.2s',
                 }}
               />
@@ -278,91 +234,47 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
           </div>
         </div>
 
-        {/* Infos */}
-        <div
-          style={{
-            padding: '2.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-          }}
-        >
+        {/* ── Infos ── */}
+        <div className="flex flex-col justify-between p-6 sm:p-10">
           <div>
             <span
-              style={{
-                fontFamily: "'Jost', sans-serif",
-                fontSize: 10,
-                letterSpacing: '0.24em',
-                textTransform: 'uppercase',
-                color: ACCENT,
-                opacity: 0.55,
-              }}
+              className="block text-[10px] tracking-[0.24em] uppercase"
+              style={{ fontFamily: "'Jost', sans-serif", color: ACCENT, opacity: 0.55 }}
             >
               {project.category}
             </span>
 
             <h2
+              className="text-[1.6rem] sm:text-[2rem] font-light leading-[1.15] mt-2 mb-5"
               style={{
                 fontFamily: "'Accia Piano', 'Cormorant Garamond', serif",
-                fontSize: '2rem',
-                fontWeight: 300,
-                lineHeight: 1.15,
                 color: DARK_NAVY,
-                margin: '0.6rem 0 1.5rem',
               }}
             >
               {project.title}
             </h2>
 
             <p
-              style={{
-                fontFamily: "'Jost', sans-serif",
-                fontSize: '0.9rem',
-                fontWeight: 300,
-                lineHeight: 1.8,
-                color: MUTED,
-                marginBottom: '2rem',
-              }}
+              className="text-[0.9rem] font-light leading-[1.8] mb-8"
+              style={{ fontFamily: "'Jost', sans-serif", color: MUTED }}
             >
               {project.description}
             </p>
 
             {/* Détails */}
             <div
-              style={{
-                borderTop: `1px solid rgba(17,72,97,0.12)`,
-                paddingTop: '1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.6rem',
-              }}
+              className="flex flex-col gap-2.5 pt-5"
+              style={{ borderTop: `1px solid rgba(17,72,97,0.12)` }}
             >
               {project.details.map((d, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                  }}
-                >
+                <div key={i} className="flex items-center gap-3">
                   <span
-                    style={{
-                      width: 16,
-                      height: 1,
-                      background: CREAM,
-                      display: 'block',
-                      flexShrink: 0,
-                    }}
+                    className="block shrink-0 h-px w-4"
+                    style={{ background: CREAM }}
                   />
                   <span
-                    style={{
-                      fontFamily: "'Jost', sans-serif",
-                      fontSize: '0.82rem',
-                      fontWeight: 300,
-                      color: MUTED,
-                      letterSpacing: '0.04em',
-                    }}
+                    className="text-[0.82rem] font-light tracking-[0.04em]"
+                    style={{ fontFamily: "'Jost', sans-serif", color: MUTED }}
                   >
                     {d}
                   </span>
@@ -374,19 +286,12 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
           {/* Fermer */}
           <button
             onClick={onClose}
+            className="mt-8 self-start px-5 py-2 text-[11px] tracking-[0.16em] uppercase cursor-pointer transition-[background,color] duration-200"
             style={{
-              marginTop: '2rem',
-              alignSelf: 'flex-start',
-              padding: '0.5rem 1.25rem',
+              fontFamily: "'Jost', sans-serif",
               border: `1px solid ${ACCENT}`,
               background: 'transparent',
               color: ACCENT,
-              fontFamily: "'Jost', sans-serif",
-              fontSize: 11,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'background 0.2s, color 0.2s',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = ACCENT
@@ -422,7 +327,7 @@ export default function Portfolio() {
         style={{
           maxWidth: 1200,
           margin: '0 auto',
-          padding: '5rem 3rem 3rem',
+          padding: '2rem 3rem 3rem',
           display: 'grid',
           gridTemplateColumns: 'auto 1fr',
           gap: '4rem',
@@ -464,7 +369,7 @@ export default function Portfolio() {
           </motion.h1>
         </div>
 
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -481,7 +386,7 @@ export default function Portfolio() {
         >
           Chaque pièce restaurée est une histoire singulière. Survolez les cartes pour
           découvrir les détails, cliquez pour en savoir plus.
-        </motion.p>
+        </motion.p> */}
       </div>
 
       {/* GRILLE */}
@@ -497,7 +402,7 @@ export default function Portfolio() {
       >
         {PROJECTS.map((p, i) => (
           <motion.div
-            key={p.title}
+            key={i}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
