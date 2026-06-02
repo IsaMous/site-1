@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# Site web d'Isabelle Mousterou
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Stack technique :
+- Typescript
+- Vite
+- React + react-router-dom
+- TailwindCSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Lancer le site pour developper localement
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+--- 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Mettre à jour le site public
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Ce site est connecté à [Vercel](https://vercel.com/), le déploiement public est donc automatique à chaque mise à jour de ce repo GitHub.
+
+---
+
+## Ajouter des photos au portfolio
+
+Pour ajouter des photos au portfolio, il faudra suivre ses étapes :
+
+### 1 - Créer un dossier dans `src/assets/projects`
+
+Les projets seront affichés dans l'ordre alphabétique de leur nom, il est donc conseillé de le préfixer d'un numéro à 2 chiffres pour modifier leur position.
+
+> Exemple:
+> ```txt
+> projects/
+> |  01-chaise-paille/
+> |  02-fauteuil-louis-xv/
+> etc..
+> ```
+
+### 2 - Ajouter les photos correspondantes dans le dossier
+
+Mettre toutes les photos correpondantes au projet dans le dossier.
+
+> Exemple:
+> ```txt
+> projects/
+>  |  01-chaise-paille/
+>  |    | image1.jpg
+>  |    | image2.jpg
+>  |  02-fauteuil-louis-xv/
+>  |    | image.jpg
+> etc..
+> ```
+
+### 3 - Ajouter un fichier `index.ts` dans le dossier
+
+Créer un fichier nommé `index.ts` et le placer dans le dossier. Voici un exemple de son contenu :
+
+```ts
+// ! Ne pas toucher cette ligne
+import type { Project } from '../../../projects'
+
+// Import des différentes images présentes dans le dossier
+import img1 from './image1.jpg'
+import img2 from './image2.jpg'
+
+export const project: Project = {
+    // Titre du projet
+    title: "Chaise en paille",
+    // Description du projet
+    description: "Restauration complète d'une chaise en paille.",
+    // Catégorie (Réfection, Restauration, Vente, etc..)
+    category: "Restauration",
+    // Détails (Tissus)
+    details: ["Tissu : Casal", "Traitement anti tâches"],
+    // Ajout des photos importées ici
+    photos: [img1, img2]
+}
 ```
+
+> Exemple :
+> ```txt
+> projects/
+>  |  01-chaise-paille/
+>  |    | index.ts
+>  |    | image1.jpg
+>  |    | image2.jpg
+>  |  02-fauteuil-louis-xv/
+>  |    | index.ts
+>  |    | image.jpg
+>  |  03-bergere/
+> etc..
+> ```
+
+### C'est tout bon !
+
+Le fichier `index.ts` sera détecté automatiquement, et le projet sera donc ajouté au portfolio au prochain lancement de l'application.

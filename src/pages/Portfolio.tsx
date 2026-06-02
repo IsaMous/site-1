@@ -497,7 +497,7 @@ export default function Portfolio() {
       >
         {PROJECTS.map((p, i) => (
           <motion.div
-            key={p.id}
+            key={p.title}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

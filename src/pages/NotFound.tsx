@@ -36,7 +36,8 @@ export default function NotFound() {
         ctx.lineWidth   = 1
         for (let x = 0; x <= w; x += 2) {
           const y = yBase + Math.sin((x / w) * Math.PI * 4 + frame * 0.012 + phase) * amp
-          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+          if (x === 0) ctx.moveTo(x, y)
+          else         ctx.lineTo(x, y)
         }
         ctx.stroke()
       }
