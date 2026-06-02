@@ -286,7 +286,7 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
           {/* Fermer */}
           <button
             onClick={onClose}
-            className="mt-8 self-start px-5 py-2 text-[11px] tracking-[0.16em] uppercase cursor-pointer transition-[background,color] duration-200"
+            className="mt-8 px-5 py-2 text-[11px] tracking-[0.16em] uppercase cursor-pointer transition-[background,color] duration-200"
             style={{
               fontFamily: "'Jost', sans-serif",
               border: `1px solid ${ACCENT}`,
