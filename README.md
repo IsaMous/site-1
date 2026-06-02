@@ -75,7 +75,7 @@ export const project: Project = {
     description: "Restauration complète d'une chaise en paille.",
     // Catégorie (Réfection, Restauration, Vente, etc..)
     category: "Restauration",
-    // Détails (Tissus)
+    // Détails (Tissus, traitements, caractéristiques, etc..)
     details: ["Tissu : Casal", "Traitement anti tâches"],
     // Ajout des photos importées ici
     photos: [img1, img2]
@@ -92,7 +92,6 @@ export const project: Project = {
 >  |  02-fauteuil-louis-xv/
 >  |    | index.ts
 >  |    | image.jpg
->  |  03-bergere/
 > etc..
 > ```
 
